@@ -1,0 +1,79 @@
+SNOOPING CONFIGURATION
+
+L2 Security feature on Switch
+
+SWITCH
+---------
+Switch>
+Switch>
+Switch>
+Switch>
+Switch>en
+Switch#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Switch(config)#
+Switch(config)#
+Switch(config)#
+Switch(config)#
+Switch(config)#ip dhcp spoofin	
+Switch(config)#ip dhcp snooping
+Switch(config)#ip dhcp sn
+Switch(config)#ip dhcp snooping vlan 1
+Switch(config)#
+Switch(config)#
+Switch(config)#ip dhcp snoop
+
+
+
+Switch>en
+Switch#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Switch(config)#int fa0/4
+Switch(config-if)#
+Switch(config-if)#
+Switch(config-if)#ip dhcp snooping trust
+Switch(config-if)#ex
+Switch(config)#
+
+Switch>	
+Switch>en
+Switch#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Switch(config)#
+Switch(config)#do sh ip dhcp snooping
+Switch DHCP snooping is enabled
+DHCP snooping is configured on following VLANs:
+1
+Insertion of option 82 is enabled
+Option 82 on untrusted port is not allowed
+Verification of hwaddr field is enabled
+Interface                  Trusted    Rate limit (pps)
+-----------------------    -------    ----------------
+FastEthernet0/2            no         unlimited       
+FastEthernet0/1            no         unlimited       
+FastEthernet0/4            yes        unlimited       
+Switch(config)#do sh his
+  do sh ip dhcp snooping
+  do sh his
+Switch(config)#
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+
+ROUTER 1
+---------
+Router>
+Router>EN
+Router#CONF T
+Enter configuration commands, one per line.  End with CNTL/Z.
+Router(config)#int g0/0
+Router(config-if)#ip add 192.168.1.100 255.255.255.0
+Router(config-if)#no sh
+
+Router(config-if)#
+%LINK-5-CHANGED: Interface GigabitEthernet0/0, changed state to up
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet0/0, changed state to up
+ex
+Router(config)#
+
+--------------------------------------------------------------------------------------------------------------------------------------------
